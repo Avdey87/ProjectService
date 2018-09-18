@@ -34,6 +34,8 @@ public class MyService extends Service {
                 Log.d(TAG, "run" + System.currentTimeMillis());
             }
         }, 1000, 1000, TimeUnit.MICROSECONDS);
+
+
         return START_STICKY;
     }
 

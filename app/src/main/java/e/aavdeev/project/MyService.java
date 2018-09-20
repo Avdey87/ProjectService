@@ -24,18 +24,11 @@ public class MyService extends Service {
     public void onCreate() {
         Log.d(TAG, "onCreate");
         scheduledExecutorService = Executors.newScheduledThreadPool(1);
-    }
+            }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                Log.d(TAG, "run" + System.currentTimeMillis());
-            }
-        }, 1000, 1000, TimeUnit.MICROSECONDS);
-
-
+        myTask();
         return START_STICKY;
     }
 
@@ -44,4 +37,24 @@ public class MyService extends Service {
         Log.d(TAG, "STOP");
         scheduledExecutorService.shutdownNow();
     }
+ void myTask() {
+
+     scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+         @Override
+         public void run() {
+          /*   for (int i = 0; i==100; i++) {
+                 Log.d(TAG, "i= " + i);
+                 try {
+                     TimeUnit.SECONDS.sleep(1);
+                 } catch (InterruptedException e) {
+                     e.printStackTrace();
+                 }
+             }*/
+
+             Log.d(TAG, "run" + System.currentTimeMillis());
+         }
+     }, 1000, 1000, TimeUnit.MICROSECONDS);
+
+ }
+
 }
